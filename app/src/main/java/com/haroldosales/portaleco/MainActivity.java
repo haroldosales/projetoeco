@@ -13,15 +13,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        WebView web= (WebView) findViewById(R.id.web);
+        final WebView web= (WebView) findViewById(R.id.web);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                // Code for WebView goes here
+                /*urldosite*/
+                 web.loadUrl("https://www.portalecovida.com.br");
 
-	/*urldosite*/
-        web.loadUrl("https://www.portalecovida.com.br");
+
+                WebSettings webSe = web.getSettings();
+                webSe.setAllowContentAccess(true);
+
+                webSe.setJavaScriptEnabled(true);
+            }
+        });
 
 
-        WebSettings webSe = web.getSettings();
 
-        webSe.setJavaScriptEnabled(true);
 
     }
 }
